@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Practica2Teoria.jar" size="7611" download="eager" />
+    <jar href="Practica2Teoria.jar" size="8558" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Practica2Teoria" >
     <param name="requiredFXVersion" value="8.0+"/>
