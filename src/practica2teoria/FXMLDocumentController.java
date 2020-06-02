@@ -40,6 +40,7 @@ public class FXMLDocumentController implements Initializable {
     static private int j=0,longitud=0,contador=0;
     static private Object[][] gramatica;
     static private ArrayList<String> ladoDerecho;
+    static private Gramatica gramaticaU;
     @FXML
     TextArea textoGramatica,textoAutomata;
     /**
@@ -58,6 +59,7 @@ public class FXMLDocumentController implements Initializable {
         if(!"".equals(entrada)){
             System.out.println(entrada);
             longitud=Integer.parseInt(entrada);
+            gramaticaU=new Gramatica(longitud);
             gramatica=new Object[longitud][2];
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
             Scene scene = new Scene(root);
@@ -198,6 +200,7 @@ public class FXMLDocumentController implements Initializable {
         if(contador==(longitud-1)){
             gramatica[contador][1]=ladoDerecho;
             System.out.println(mostrar());
+            gramaticaU.setGramatica(gramatica);
             Parent root = FXMLLoader.load(getClass().getResource("AnalisisGramatica.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -258,10 +261,18 @@ public class FXMLDocumentController implements Initializable {
         return mensaje;
     }
     /**
-     * Método encargado de mostrar l gramatica en un textbox.
+     * Método encargado de mostrar la gramatica en un textbox.
      */
     public void mostrarGramaticaCompleta(){
-        textoGramatica.setText(mostrar());
+        gramaticaU.setGramatica(gramatica);
+        gramaticaU.noTerminales();
+        gramaticaU.terminales();
+        gramaticaU.terminalesAnulables();
+        gramaticaU.primeros();
+        gramaticaU.primerosPorPoduccion();
+        gramaticaU.siguientes();
+        gramaticaU.seleccion();
+        textoGramatica.setText(gramaticaU.mostrar());
     }
     
 }
